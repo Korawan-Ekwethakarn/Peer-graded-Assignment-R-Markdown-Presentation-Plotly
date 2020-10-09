@@ -1,12 +1,19 @@
 # Peer-graded-Assignment-R-Markdown-Presentation-Plotly
 # Plotly is a web application for creating and sharing data visualizations. Plotly can work with several programming languages and applications including R, Python, and Microsoft Excel. We’re going to concentrate on creating different graphs with Plotly and sharing those graphs.
 # Installing Plotly
-install.packages("plotly")
+# install.packages("plotly")
 library(plotly)
-# Basic Scatterplot
-# A basic scatterplot is easy to make, with the added benefit of tooltips that appear when your mouse hovers over each point.Specify a scatterplot by indicating type = "scatter". Notice that the arguments for the x and y variables as specified as formulas, with the tilde operator (~) preceding the variable that you’re plotting.
+plain_x <- c(1:50)
+plain_y <- rnorm(50, mean = 0)
+data <- data.frame(plain_x, plain_y )
+p <- plot_ly(data, x = ~plain_x, y = ~plain_y , type = 'scatter', mode = 'lines')
+p
+
 library(plotly)
-plot_ly(mtcars, x = ~wt, y = ~mpg, type = "scatter")
+library(ggplot2)
+df <- data.frame(x =  1:10, y = (1:10)^2)
+p <- ggplot(df, aes(x = x, y = y)) + geom_line() + labs(x = "X", y = "Y", title = "X and Y")
+
 # Scatterplot Color
 # You can add color to your scatterplot points according to acategorical variable in the data frame you use with plot_ly().
 plot_ly(mtcars, x = ~wt, y = ~mpg, type = "scatter", color
